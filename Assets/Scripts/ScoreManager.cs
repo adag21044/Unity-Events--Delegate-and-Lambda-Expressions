@@ -1,4 +1,3 @@
-// ScoreManager.cs
 using TMPro;
 using UnityEngine;
 
