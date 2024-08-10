@@ -1,25 +1,25 @@
-using System;
+// ScoreManager.cs
 using TMPro;
 using UnityEngine;
-public class ScoreManager : MonoBehaviour
+
+public class ScoreManager : MonoBehaviour, IScoreManager
 {
-    public int score = 0;
+    private int _score;
     public TextMeshProUGUI scoreText;
 
     private void OnEnable()
     {
-        EventManager.OnMouseClick += IncreaseScore;
-        
+        EventManager.OnMouseClick += () => IncreaseScore();
     }
 
     private void OnDisable()
     {
-        EventManager.OnMouseClick -= IncreaseScore;
+        EventManager.OnMouseClick -= () => IncreaseScore();
     }
 
     public void IncreaseScore()
     {
-        score++;
-        scoreText.text = "Score : "+score.ToString();
+        _score++;
+        scoreText.text = $"Score: {_score}";
     }
 }
